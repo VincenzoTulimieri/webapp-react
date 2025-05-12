@@ -4,7 +4,7 @@ export default function MovieCard({ movies }) {
     return (
         movies.length ? movies.map(movie => (
             <div className="col-12 col-md-4 gy-3" key={movie.id}>
-                <div className="card">
+                <div className="card h-100">
                     <img src={movie.imgPath} alt={movie.title} className="w-50 mx-auto"/>
                     <div className="card-body">
                         <h3 className="card-title"><strong>{movie.title}</strong></h3>

@@ -17,9 +17,9 @@ export default function Movies (){
 
     return(
         <div className="container my-3">
-            <h1 className="mb-3">Film</h1>
+            <h1 className="mb-3 vt-text">Film</h1>
             <section>
-                <h2 className="mb-3">I migliori Film da vedere</h2>
+                <h2 className="mb-3 vt-text">I migliori Film da vedere</h2>
                 <div className="row">
                     <MovieCard movies={movies}/>
                 </div>
