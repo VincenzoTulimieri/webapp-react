@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import MovieCard from "../components/MovieCard";
 import axios from "axios";
+import SearchComponent from "../components/searchComponent";
 
 export default function Movies() {
 
@@ -8,7 +9,7 @@ export default function Movies() {
     const [search, setSearch] = useState('')
 
     function apiMovies() {
-        axios.get('http://127.0.0.1:3000/movies',{
+        axios.get('http://127.0.0.1:3000/movies', {
             params:{
                 search
             }
@@ -16,7 +17,7 @@ export default function Movies() {
             .then(response => {
                 setMovies(response.data)
             })
-            .catch(err=>consol.log(err))
+            .catch(err=>console.log(err))
     }
 
     useEffect(apiMovies, [])
@@ -28,18 +29,10 @@ export default function Movies() {
 
     return (
         <div className="container my-3">
-            <h1 className="mb-3 vt-text">Film</h1>
             <section>
                 <div className="vt-search">
-                    <h2 className="mb-3 vt-text">I migliori Film da vedere</h2>
-                    <form className="row g-3" onSubmit={searchMovies}>
-                        <div className="col-auto">
-                            <input type="text" className="form-control" placeholder="Cerca" value={search} onChange={(event)=>setSearch(event.target.value)} />
-                        </div>
-                        <div className="col-auto">
-                            <button type="submit" className="btn btn-primary mb-3">Cerca</button>
-                        </div>
-                    </form>
+                    <h2 className="mb-3 vt-text-color vt-text">I migliori Film da vedere</h2>
+                    <SearchComponent search={search} setSearch={setSearch} searchMovies={searchMovies}/>
                 </div>
                 <div className="row">
                     <MovieCard movies={movies} />

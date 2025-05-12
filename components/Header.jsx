@@ -1,11 +1,13 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, Link} from "react-router-dom";
 
 export default function Header (){
     return(
-        <header className="bg-danger py-2 mb-3">
-            <div className="container d-flex justify-content-between">
-                <div className="vt-container-logo">logooo</div>
-                <NavLink to={'/movies'}>Film</NavLink>
+        <header className="bg-danger py-2 mb-4">
+            <div className="container d-flex align-items-center gap-4">
+                <div className="vt-container-logo">
+                    <Link to={'/movies'}><img src="../public/logo-grande.png" alt="" className="w-100"/></Link>
+                </div>
+                <h1 className="vt-text-color vt-text">Movie time</h1>
             </div>
         </header>
     )

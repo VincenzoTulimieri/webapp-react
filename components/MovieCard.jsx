@@ -9,11 +9,12 @@ export default function MovieCard({ movies }) {
                     <div className="card-body">
                         <h3 className="card-title"><strong>{movie.title}</strong></h3>
                         <p>Regia di <strong>{movie.director}</strong></p>
-                        <p className="card-text">{movie.abstract}</p>
+                        <p>Genere <strong>{movie.genre}</strong></p>
+                        <p className="card-text">Trama <strong>{movie.abstract}</strong></p>
                         <Link to={`/movies/:${movie.id}`} className="btn btn-primary">Dettagli</Link>
                     </div>
                 </div>
             </div>
-        )) : <div>Elementi non trovati</div>
+        )) : <div className="vt-text-color">Elementi non trovati</div>
     )
 }
