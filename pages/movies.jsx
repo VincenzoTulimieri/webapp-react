@@ -1,3 +1,4 @@
+// importazione file
 import { useEffect, useState } from "react";
 import MovieCard from "../components/MovieCard";
 import axios from "axios";
@@ -8,7 +9,7 @@ export default function Movies() {
     const [movies, setMovies] = useState([])
     const [search, setSearch] = useState('')
 
-    function apiMovies() {
+    function getMovies() {
         axios.get('http://127.0.0.1:3000/movies', {
             params:{
                 search
@@ -20,11 +21,11 @@ export default function Movies() {
             .catch(err=>console.log(err))
     }
 
-    useEffect(apiMovies, [])
+    useEffect(getMovies, [])
 
     function searchMovies(event){
         event.preventDefault()
-        apiMovies()
+        getMovies()
     }
 
     return (
