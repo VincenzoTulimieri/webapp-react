@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import ReviewsCard from "../components/ReviewsCard";
+import StarRating from "../components/StarRating";
 
 export default function MovieDetails(){
 
@@ -34,7 +35,7 @@ export default function MovieDetails(){
             <section>
                 <div className="mb-2 vt-flex">
                     <h4 className="vt-text-color">Le migliori Recensioni</h4>
-                    <p className="vt-text-color">{movie.reviews_vote}</p>
+                    <p className="vt-text-color">{movie.reviews_vote} <StarRating /> </p>
                 </div>
                 {movie.reviews?.map(review =><ReviewsCard key={review.id} data={review} />)}
             </section>
