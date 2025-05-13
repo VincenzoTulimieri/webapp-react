@@ -1,5 +1,5 @@
 // importazione file
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import ReviewsCard from "../components/ReviewsCard";
@@ -8,6 +8,7 @@ import StarRating from "../components/StarRating";
 export default function MovieDetails(){
 
     const {id} = useParams()
+    const navigate = useNavigate()
     const [movie, setMovie] = useState([])
 
     function getMovie() {
@@ -39,6 +40,7 @@ export default function MovieDetails(){
                 </div>
                 {movie.reviews?.map(review =><ReviewsCard key={review.id} data={review} />)}
             </section>
+            <button className="btn btn-danger" onClick={()=> navigate(-1)}><i className="fa-solid fa-chevron-left"></i> Pagina Precedente</button>
         </article>
         
     )
