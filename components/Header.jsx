@@ -8,7 +8,7 @@ export default function Header() {
                 <div className="vt-container-logo">
                     <Link to={'/movies'}><img src="../logo-grande.png" alt="" className="w-100" /></Link>
                 </div>
-                <h1 className="vt-text-color vt-text">Movie time</h1>
+                <h1 className="vt-text-color vt-text-dimension">Movie time</h1>
             </div>
         </header>
     )
