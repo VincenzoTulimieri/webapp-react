@@ -11,6 +11,7 @@ export default function MovieCard({ movies }) {
                         <h3 className="card-title"><strong>{movie.title}</strong></h3>
                         <p>Regia di <strong>{movie.director}</strong></p>
                         <p>Genere: <strong>{movie.genre}</strong></p>
+                        <p>Voto: <strong>{movie.reviews_vote}</strong></p>
                         <p className="card-text">Trama: <strong>{movie.abstract}</strong></p>
                         <Link to={`/movies/${movie.id}`} className="btn btn-danger">Recensioni</Link>
                     </div>
