@@ -35,7 +35,7 @@ export default function MovieDetails(){
             <section>
                 <div className="mb-2 vt-flex">
                     <h4 className="vt-text-color">Le migliori Recensioni</h4>
-                    <p className="vt-text-color">{movie.reviews_vote} <StarRating /> </p>
+                    <p className="vt-text-color"><StarRating vote={movie?.reviews_vote}/></p>
                 </div>
                 {movie.reviews?.map(review =><ReviewsCard key={review.id} data={review} />)}
             </section>

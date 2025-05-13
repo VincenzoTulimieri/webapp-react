@@ -1,5 +1,6 @@
 // importazione file
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
+import StarRating from "../components/StarRating";
 
 export default function MovieCard({ movies }) {
     return (
@@ -11,7 +12,7 @@ export default function MovieCard({ movies }) {
                         <h3 className="card-title"><strong>{movie.title}</strong></h3>
                         <p>Regia di <strong>{movie.director}</strong></p>
                         <p>Genere: <strong>{movie.genre}</strong></p>
-                        <p>Voto: <strong>{movie.reviews_vote}</strong></p>
+                        <p>Voto: <StarRating vote={movie.reviews_vote}/></p>
                         <p className="card-text">Trama: <strong>{movie.abstract}</strong></p>
                         <Link to={`/movies/${movie.id}`} className="btn btn-danger">Recensioni</Link>
                     </div>
