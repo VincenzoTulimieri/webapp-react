@@ -31,7 +31,7 @@ export default function Movies() {
     return (
         <div className="container my-3">
             <section>
-                <div className="vt-search">
+                <div className="vt-flex">
                     <h2 className="mb-3 vt-text-color vt-text-dimension">I migliori Film da vedere</h2>
                     <SearchComponent search={search} setSearch={setSearch} searchMovies={searchMovies}/>
                 </div>
