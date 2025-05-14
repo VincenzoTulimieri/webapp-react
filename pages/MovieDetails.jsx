@@ -38,7 +38,7 @@ export default function MovieDetails(){
                     <h4 className="vt-text-color">Le migliori Recensioni</h4>
                     <p className="vt-text-color"><StarRating vote={movie?.reviews_vote}/></p>
                 </div>
-                {movie.reviews?.map(review =><ReviewsCard key={review.id} data={review} />)}
+                {movie.reviews?.length ? movie.reviews.map(review =><ReviewsCard key={review.id} data={review} />) : <div><h1>Nessuna recensione trovata</h1></div>}
             </section>
             <button className="btn btn-danger" onClick={()=> navigate(-1)}><i className="fa-solid fa-chevron-left"></i> Pagina Precedente</button>
         </article>
