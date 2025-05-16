@@ -1,8 +1,8 @@
 // importazione file
 import { BrowserRouter, Route, Routes } from "react-router-dom"
-import DefaultLayout from "../layout/defaultLayout"
-import Movies from "../pages/Movies"
-import MovieDetails from "../pages/MovieDetails"
+import DefaultLayout from "./layout/defaultLayout"
+import Movies from "./pages/Movies"
+import MovieDetails from "./pages/MovieDetails"
 
 function App() {
   return (
