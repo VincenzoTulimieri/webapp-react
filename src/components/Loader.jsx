@@ -1,7 +1,7 @@
 export default function Loader(){
     return(
-        <div>
-            <h1 className="vt-color-text">Caricamento in corso...</h1>
+        <div className="contaier">
+            <h1 className="vt-text-color">Caricamento in corso...</h1>
         </div>
     )
 }

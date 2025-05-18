@@ -5,17 +5,22 @@ import axios from "axios";
 import ReviewsCard from "../components/ReviewsCard";
 import StarRating from "../components/StarRating";
 import FormReviews from "../components/FormReviews";
+import { useContext } from "react";
+import GlobalContext from "../contexts/GlobalContext";
 
 export default function MovieDetails(){
 
     const {id} = useParams()
     const navigate = useNavigate()
     const [movie, setMovie] = useState([])
+    const {setIsLoader}= useContext(GlobalContext)
 
     function getMovie() {
+        setIsLoader(true)
         axios.get(`http://127.0.0.1:3000/movies/${id}`)
             .then(response => {
                 setMovie(response.data)
+                setIsLoader(false)
             })
             .catch(err=>console.log(err))
     }

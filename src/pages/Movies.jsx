@@ -3,13 +3,17 @@ import { useEffect, useState } from "react";
 import MovieCard from "../components/MovieCard";
 import axios from "axios";
 import SearchComponent from "../components/searchComponent";
+import { useContext } from "react";
+import GlobalContext from "../contexts/GlobalContext";
 
 export default function Movies() {
 
     const [movies, setMovies] = useState([])
     const [search, setSearch] = useState('')
+    const {setIsLoader}= useContext(GlobalContext)
 
     function getMovies() {
+        setIsLoader(true)
         axios.get('http://127.0.0.1:3000/movies', {
             params:{
                 search
@@ -17,6 +21,7 @@ export default function Movies() {
         })
             .then(response => {
                 setMovies(response.data)
+                setIsLoader(false)
             })
             .catch(err=>console.log(err))
     }
