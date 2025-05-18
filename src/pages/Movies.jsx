@@ -21,9 +21,10 @@ export default function Movies() {
         })
             .then(response => {
                 setMovies(response.data)
-                setIsLoader(false)
+                
             })
             .catch(err=>console.log(err))
+            .finally(()=>setIsLoader(false))
     }
 
     useEffect(getMovies, [])
