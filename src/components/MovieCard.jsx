@@ -18,6 +18,6 @@ export default function MovieCard({ movies }) {
                     </div>
                 </div>
             </div>
-        )) : <div className="vt-text-color">Elementi non trovati</div>
+        )) : <div className="container"><h1 className="vt-text-color">Elementi non trovati</h1></div>
     )
 }
