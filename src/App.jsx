@@ -8,11 +8,11 @@ import { useState } from "react"
 
 function App() {
 
-  const[loader, setLoader]= useState(false)
+  const[isLoader, setIsLoader]= useState(false)
 
   return (
     <>
-      <GlobalContext.Provider value={{loader,setLoader}}>
+      <GlobalContext.Provider value={{isLoader,setIsLoader}}>
         <BrowserRouter>
           <Routes>
             <Route element={<DefaultLayout />}>
