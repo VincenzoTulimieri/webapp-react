@@ -20,9 +20,9 @@ export default function MovieDetails(){
         axios.get(`http://127.0.0.1:3000/movies/${id}`)
             .then(response => {
                 setMovie(response.data)
-                setIsLoader(false)
             })
             .catch(err=>console.log(err))
+            .finally(()=>setIsLoader(false))
     }
 
     useEffect(getMovie, [id])
@@ -44,7 +44,7 @@ export default function MovieDetails(){
                     <h4 className="vt-text-color">Le migliori Recensioni</h4>
                     <p className="vt-text-color"><StarRating vote={movie?.reviews_vote}/></p>
                 </div>
-                {movie.reviews?.length ? movie.reviews.map(review =><ReviewsCard key={review.id} data={review} />) : <div><h1>Nessuna recensione trovata</h1></div>}
+                {movie.reviews?.length ? movie.reviews.map(review =><ReviewsCard key={review.id} data={review} />) : <div><h1 className="vt-text-color">Nessuna recensione trovata</h1></div>}
             </section>
             <section className="mb-3">
                 <FormReviews id={id} getMovie={getMovie}/>
