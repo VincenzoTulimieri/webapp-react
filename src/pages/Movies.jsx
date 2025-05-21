@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import MovieCard from "../components/MovieCard";
 import axios from "axios";
-import SearchComponent from "./components/searchComponent";
+import SearchComponent from "../components/searchComponent";
 import { useContext } from "react";
 import GlobalContext from "../contexts/GlobalContext";
 
