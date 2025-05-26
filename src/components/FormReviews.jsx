@@ -55,7 +55,7 @@ export default function FormReviews({ id, getMovie }) {
                         <textarea className="form-control" id="form-text" rows="3" value={formData.text} name="text" onChange={sendData} required></textarea>
                     </div>
                     <div className="mb-3">
-                       <button type="submit" className="btn btn-danger mb-3">Aggiungi</button>
+                       <button type="submit" className="btn btn-danger">Aggiungi</button>
                     </div>
                 </div>
             </div>
