@@ -36,6 +36,13 @@ img{
   gap: 10px;
   align-items: baseline;
 }
+.vt-container-welcome{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+}
 
 /* form */
 .vt-flex{
