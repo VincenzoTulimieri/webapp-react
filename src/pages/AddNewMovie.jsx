@@ -1,39 +1,42 @@
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import axios from "axios"
+import { Link } from "react-router-dom"
 
 export default function AddNewMovies() {
     const initialValue = {
-        title:'',
-        genre:'',
-        director:'',
-        abstract:'',
+        title: '',
+        genre: '',
+        director: '',
+        abstract: '',
         image: null
     }
 
     const [formDataFilm, setFromDataFilm] = useState(initialValue)
+    const [successMessage, setSuccesMessage] = useState('')
 
-    function sendData(event){
-        const {name, value, files}= event.target
+    function sendData(event) {
+        const { name, value, files } = event.target
         let currentValue = value
 
-        if(name === 'image'){
+        if (name === 'image') {
             currentValue = files[0]
         }
 
-        setFromDataFilm((formDataFilm)=>({
+        setFromDataFilm((formDataFilm) => ({
             ...formDataFilm,
-            [name]:currentValue
+            [name]: currentValue
         }))
     }
 
-    function sendDataServer(event){
+    function sendDataServer(event) {
         event.preventDefault()
-        axios.post(`http://127.0.0.1:3000/movies`, formDataFilm,{headers:{"Content-Type":"multipart/form-data"}})
-            .then(response=>(
+        axios.post(`http://127.0.0.1:3000/movies`, formDataFilm, { headers: { "Content-Type": "multipart/form-data" } })
+            .then(response => (
+                setSuccesMessage('Film aggiunto con successo'),
                 setFromDataFilm(initialValue)
             ))
-            .catch(err=>console.log(err)
-        )
+            .catch(err => console.log(err)
+            )
     }
 
     return (
@@ -46,15 +49,15 @@ export default function AddNewMovies() {
                     <form onSubmit={sendDataServer}>
                         <div className="mb-3">
                             <label htmlFor="title" className="form-label">Titolo del Film</label>
-                            <input type="text" className="form-control" id="title" placeholder="Inserisci il titolo" value={formDataFilm.title} name="title" onChange={sendData} required/>
+                            <input type="text" className="form-control" id="title" placeholder="Inserisci il titolo" value={formDataFilm.title} name="title" onChange={sendData} required />
                         </div>
                         <div className="mb-3">
                             <label htmlFor="genre" className="form-label">Genere</label>
-                            <input type="text" className="form-control" id="genre" placeholder="Inserisci il genere" value={formDataFilm.genre} name="genre" onChange={sendData} required/>
+                            <input type="text" className="form-control" id="genre" placeholder="Inserisci il genere" value={formDataFilm.genre} name="genre" onChange={sendData} required />
                         </div>
                         <div className="mb-3">
                             <label htmlFor="director" className="form-label">Regista</label>
-                            <input type="text" className="form-control" id="director" placeholder="Inserisci il regista" value={formDataFilm.director} name="director" onChange={sendData} required/>
+                            <input type="text" className="form-control" id="director" placeholder="Inserisci il regista" value={formDataFilm.director} name="director" onChange={sendData} required />
                         </div>
                         <div className="mb-3">
                             <label htmlFor="abstract" className="form-label">Trama</label>
@@ -62,12 +65,18 @@ export default function AddNewMovies() {
                         </div>
                         <div className="mb-3">
                             <label htmlFor="image" className="form-label">Immagine</label>
-                            <input className="form-control" type="file" id="image" name="image" onChange={sendData} required/>
+                            <input className="form-control" type="file" id="image" name="image" onChange={sendData} required />
                         </div>
                         <div className="mb-3">
                             <button type="submit" className="btn btn-danger">Aggiungi</button>
                         </div>
                     </form>
+                    {successMessage && (
+                        <div className="alert alert-success vt-flex-success" role="alert">
+                            {successMessage}
+                            <Link to={'/movies'} className="btn btn-danger" >Torna alla lista dei Film</Link>
+                        </div>
+                    )}
                 </div>
             </div>
         </div>

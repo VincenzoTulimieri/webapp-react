@@ -43,3 +43,8 @@ img{
   justify-content: space-between;
   align-items: end;
 }
+.vt-flex-success{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
