@@ -39,11 +39,8 @@ export default function Movies() {
         <section className="container my-3">
             <div className="vt-flex">
                 <h2 className="mb-3 vt-text-color vt-text-dimension">I migliori Film da vedere</h2>
-                <div>
-                    <div className="vt-flex-container mb-3">
-                        <h4 className="vt-text-color">Aggiungi Film:</h4>
-                        <Link className="vt-text-color btn btn-danger" to={'/add-movie'} ><i className="fa-solid fa-plus"></i></Link>
-                    </div>
+                <div className="d-flex flex-column">
+                    <Link className="vt-text-color btn btn-danger ms-auto mb-3" to={'/add-movie'} ><i className="fa-solid fa-plus"></i> Aggiungi Film</Link>
                     <SearchComponent search={search} setSearch={setSearch} searchMovies={searchMovies} />
                 </div>
             </div>
