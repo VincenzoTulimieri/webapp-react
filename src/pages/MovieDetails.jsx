@@ -68,7 +68,7 @@ export default function MovieDetails() {
             <section className="mb-3">
                 <FormReviews id={id} getMovie={getMovie} />
             </section>
-            <button className="btn btn-danger mb-5" onClick={() => navigate(-1)}><i className="fa-solid fa-chevron-left"></i> Pagina Precedente</button>
+            <button className="btn vt-btn-back mb-5" onClick={() => navigate(-1)}><i className="fa-solid fa-chevron-left"></i> Pagina Precedente</button>
         </article>
 
     )
