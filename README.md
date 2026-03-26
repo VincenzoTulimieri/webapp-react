@@ -1,12 +1,131 @@
-# React + Vite
+# 🎬 Movie Time
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Movie Time è una web application full stack che permette di scoprire, recensire e gestire una raccolta di film.
+Il progetto è stato sviluppato interamente da zero, curando sia il frontend che il backend e il database.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Demo
 
-## Expanding the ESLint configuration
+👉 (Inserisci qui il link se lo deployi, es. Vercel)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 🧠 Descrizione
+
+L’applicazione consente agli utenti di:
+
+* Visualizzare una lista dinamica di film
+* Accedere alla pagina di dettaglio di ogni film
+* Leggere recensioni degli utenti
+* Inserire nuove recensioni con sistema di voto a stelle
+* Aggiungere nuovi film con upload immagini
+* Cercare film tramite barra di ricerca
+
+Il design è ispirato alle piattaforme di streaming, con uno stile moderno e dark.
+
+---
+
+## 🛠️ Tecnologie utilizzate
+
+### Frontend
+
+* React
+* React Router DOM
+* Bootstrap
+* CSS custom
+
+### Backend
+
+* Node.js
+* Express
+
+### Database
+
+* MySQL
+
+---
+
+## ⚙️ Funzionalità principali
+
+* 📌 CRUD completo sui film
+* ⭐ Sistema di rating con stelle
+* 🔎 Ricerca film
+* 📝 Inserimento recensioni
+* 🖼️ Upload immagini
+* 🔗 API REST custom
+
+---
+
+## 📸 Screenshots
+
+👉 (Inserisci qui le immagini del progetto)
+
+---
+
+## 📦 Installazione
+
+### 1. Clona il progetto
+
+```bash
+git clone https://github.com/tuo-username/movie-time.git
+```
+
+### 2. Backend
+
+```bash
+cd backend
+npm install
+npm run start
+```
+
+### 3. Frontend
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+---
+
+## 🔐 Variabili d’ambiente
+
+Crea un file `.env` nel backend con:
+
+```env
+PORT=3000
+
+DB_HOST=localhost
+DB_USER=root
+DB_PASSWORD=your_password
+DB_NAME=movies_db
+
+PUBLIC_IMG=http://127.0.0.1:3000/
+
+CLIENT_PORT=http://localhost:5173
+```
+
+---
+
+## 🎯 Obiettivo del progetto
+
+Questo progetto è stato realizzato per:
+
+* Consolidare competenze full stack
+* Comprendere il funzionamento delle API REST
+* Gestire l’integrazione tra frontend e backend
+* Lavorare con database relazionali
+
+---
+
+## 👨‍💻 Autore
+
+Sviluppato da Vincenzo Tulimieri
+🔗 LinkedIn: (metti il tuo link)
+
+---
+
+## 📌 Note
+
+Questo progetto rappresenta un’applicazione completa full stack sviluppata in autonomia.
