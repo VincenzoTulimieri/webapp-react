@@ -31,7 +31,7 @@ export default function MovieDetails() {
 
         <article className="container">
 
-            <div className="vt-detail-card">
+            <div className="vt-detail-card mt-5">
 
                 <div className="vt-detail">
 

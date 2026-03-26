@@ -47,7 +47,7 @@ export default function AddNewMovies() {
 
     return (
         <section className="container vt-add-movie-page">
-            <div className="vt-form-box">
+            <div className="vt-form-box mt-5">
                 <div className="vt-form-box-header">
                     <h1>Aggiungi un nuovo film</h1>
                     <p>Inserisci i dettagli del film che vuoi consigliare nella tua collezione.</p>
