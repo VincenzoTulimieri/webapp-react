@@ -1,15 +1,25 @@
 // importazione file
 import StarRating from "../components/StarRating";
 
-export default function ReviewsCard({data}) {
-    const{id, name, vote, text}= data
+export default function ReviewsCard({ data }) {
+    const { name, vote, text } = data;
+
     return (
-        <div className="card mb-3">
-            <div className="card-body">
-                <p className="vt-text-dimension">Nome: <strong>{name}</strong></p>
-                <p className="vt-text-dimension">Voto: <StarRating vote={vote}/></p>
-                <p>{text}</p>
+        <div className="vt-review-card">
+            <div className="vt-review-header">
+                <div className="vt-user">
+                    <div className="vt-avatar">
+                        {name.charAt(0).toUpperCase()}
+                    </div>
+                    <h5 className="vt-review-name">{name}</h5>
+                </div>
+
+                <div className="vt-review-stars">
+                    <StarRating vote={vote} />
+                </div>
             </div>
+
+            <p className="vt-review-text">{text}</p>
         </div>
-    )
+    );
 }

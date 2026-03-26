@@ -1,64 +1,104 @@
 import axios from "axios"
 import { useState } from "react"
+import StarInput from "./StarInput"
 
 export default function FormReviews({ id, getMovie }) {
-    const initialFormData={
-        name:'',
-        vote:1,
-        text:''
+
+    const initialFormData = {
+        name: '',
+        vote: 1,
+        text: ''
     }
-    const [formData, setFromData]= useState(initialFormData)
 
+    const [formData, setFormData] = useState(initialFormData)
+    const [successMessage, setSuccessMessage] = useState('')
+    const [isSending, setIsSending] = useState(false)
 
+    function sendData(event) {
+        const { name, value } = event.target
 
-    function sendData(event){
-        const{name,value}= event.target
-
-        let correctValue =value
-        if(name === 'vote'){
+        let correctValue = value
+        if (name === 'vote') {
             correctValue = parseInt(value)
         }
 
-        setFromData((formData)=>({
-            ...formData,
-            [name]:correctValue
+        setFormData(prev => ({
+            ...prev,
+            [name]: correctValue
         }))
-        
     }
-    function sendDataServer(event){
+
+    function handlerStarChange(starValue){
+        setFormData(prev =>({
+            ...prev,
+            vote: starValue
+        }))
+    }
+
+    function sendDataServer(event) {
         event.preventDefault()
-        axios.post(`http://127.0.0.1:3000/movies/${id}/reviews`, formData)
-            .then(response=>(
-                getMovie(),
-                setFromData(initialFormData)
-            ))
-            .catch(err=>console.log(err))
+
+        setIsSending(true)
+        setSuccessMessage('')
+
+        axios.post(`http://localhost:3000/movies/${id}/reviews`, formData)
+            .then(() => {
+                getMovie()
+                setFormData(initialFormData)
+                setSuccessMessage('Recensione pubblicata!')
+            })
+            .catch(err => console.log(err))
+            .finally(() => setIsSending(false))
     }
 
     return (
-        <form onSubmit={sendDataServer}>
-            <div className="card">
-                <div className="card-header">
-                    <h4>Scrivi Qui una tua Recensione</h4>
-                </div>
-                <div className="card-body">
-                    <div className="mb-3">
-                        <label htmlFor="reviews-name" className="form-label">Nome</label>
-                        <input type="text" className="form-control" id="reviews-name" placeholder="Inserisci in tuo nome" value={formData.name} name="name" onChange={sendData} required />
-                    </div>
-                    <div className="mb-3">
-                        <label htmlFor="form-vote" className="form-label">Voto</label>
-                        <input type="number" min={1} max={5} className="form-control" id="form-vote" placeholder="Inserici un voto" value={formData.vote} name="vote"onChange={sendData} required />
-                    </div>
-                    <div className="mb-3">
-                        <label htmlFor="form-text" className="form-label">Testo Recensione</label>
-                        <textarea className="form-control" id="form-text" rows="3" value={formData.text} name="text" onChange={sendData} required></textarea>
-                    </div>
-                    <div className="mb-3">
-                       <button type="submit" className="btn btn-danger">Aggiungi</button>
-                    </div>
-                </div>
+        <form className="vt-review-form" onSubmit={sendDataServer}>
+
+            <div className="vt-form-header">
+                <h3>Scrivi una recensione</h3>
+                <p>Condividi il tuo parere su questo film</p>
             </div>
+
+            <div className="vt-form-group">
+                <label>Nome</label>
+                <input
+                    type="text"
+                    placeholder="Il tuo nome"
+                    value={formData.name}
+                    name="name"
+                    onChange={sendData}
+                    required
+                />
+            </div>
+
+            <div className="vt-form-group">
+                <label>Voto</label>
+                <StarInput value={formData.vote} onChange={handlerStarChange} />
+            </div>
+
+            <div className="vt-form-group">
+                <label>Recensione</label>
+                <textarea
+                    placeholder="Scrivi qui la tua recensione..."
+                    value={formData.text}
+                    name="text"
+                    onChange={sendData}
+                    required
+                ></textarea>
+            </div>
+
+            <div className="vt-form-footer">
+                <button type="submit" disabled={isSending}>
+                    {isSending ? "Invio..." : "Pubblica"}
+                </button>
+            </div>
+
+            {successMessage && (
+                <div className="vt-success">
+                    {successMessage}
+                </div>
+            )}
+
         </form>
     )
 }
