@@ -11,8 +11,9 @@ export default function AddNewMovies() {
         image: null
     }
 
-    const [formDataFilm, setFromDataFilm] = useState(initialValue)
-    const [successMessage, setSuccesMessage] = useState('')
+    const [formDataFilm, setFormDataFilm] = useState(initialValue)
+    const [successMessage, setSuccessMessage] = useState('')
+    const [isSending, setIsSending] = useState(false)
 
     function sendData(event) {
         const { name, value, files } = event.target
@@ -22,63 +23,131 @@ export default function AddNewMovies() {
             currentValue = files[0]
         }
 
-        setFromDataFilm((formDataFilm) => ({
-            ...formDataFilm,
+        setFormDataFilm((prev) => ({
+            ...prev,
             [name]: currentValue
         }))
     }
 
     function sendDataServer(event) {
         event.preventDefault()
-        axios.post(`http://127.0.0.1:3000/movies`, formDataFilm, { headers: { "Content-Type": "multipart/form-data" } })
-            .then(response => (
-                setSuccesMessage('Film aggiunto con successo'),
-                setFromDataFilm(initialValue)
-            ))
-            .catch(err => console.log(err)
-            )
+        setIsSending(true)
+        setSuccessMessage('')
+
+        axios.post(`http://127.0.0.1:3000/movies`, formDataFilm, {
+            headers: { "Content-Type": "multipart/form-data" }
+        })
+            .then(() => {
+                setSuccessMessage('Film aggiunto con successo')
+                setFormDataFilm(initialValue)
+            })
+            .catch(err => console.log(err))
+            .finally(() => setIsSending(false))
     }
 
     return (
-        <div className="container mb-3">
-            <div className="card">
-                <div className="card-header">
-                    <h4>Aggiungi il tuo Film Preferito da Consigliare</h4>
+        <section className="container vt-add-movie-page">
+            <div className="vt-form-box">
+                <div className="vt-form-box-header">
+                    <h1>Aggiungi un nuovo film</h1>
+                    <p>Inserisci i dettagli del film che vuoi consigliare nella tua collezione.</p>
                 </div>
-                <div className="card-body">
-                    <form onSubmit={sendDataServer}>
-                        <div className="mb-3">
-                            <label htmlFor="title" className="form-label">Titolo del Film</label>
-                            <input type="text" className="form-control" id="title" placeholder="Inserisci il titolo" value={formDataFilm.title} name="title" onChange={sendData} required />
+
+                <form onSubmit={sendDataServer} className="vt-custom-form">
+                    <div className="vt-form-group">
+                        <label htmlFor="title">Titolo del film</label>
+                        <input
+                            type="text"
+                            id="title"
+                            placeholder="Inserisci il titolo"
+                            value={formDataFilm.title}
+                            name="title"
+                            onChange={sendData}
+                            required
+                        />
+                    </div>
+
+                    <div className="vt-form-group">
+                        <label htmlFor="genre">Genere</label>
+                        <input
+                            type="text"
+                            id="genre"
+                            placeholder="Inserisci il genere"
+                            value={formDataFilm.genre}
+                            name="genre"
+                            onChange={sendData}
+                            required
+                        />
+                    </div>
+
+                    <div className="vt-form-group">
+                        <label htmlFor="director">Regista</label>
+                        <input
+                            type="text"
+                            id="director"
+                            placeholder="Inserisci il regista"
+                            value={formDataFilm.director}
+                            name="director"
+                            onChange={sendData}
+                            required
+                        />
+                    </div>
+
+                    <div className="vt-form-group">
+                        <label htmlFor="abstract">Trama</label>
+                        <textarea
+                            id="abstract"
+                            rows="4"
+                            placeholder="Scrivi una breve descrizione del film"
+                            value={formDataFilm.abstract}
+                            name="abstract"
+                            onChange={sendData}
+                            required
+                        ></textarea>
+                    </div>
+
+                    <div className="vt-form-group">
+                        <label htmlFor="image">Immagine</label>
+                        <div className="vt-file-upload">
+
+                            <label htmlFor="image" className="vt-file-label">
+                                <i className="fa-solid fa-upload"></i>
+                                Scegli immagine
+                            </label>
+
+                            <input
+                                type="file"
+                                id="image"
+                                name="image"
+                                onChange={sendData}
+                                required
+                            />
+
+                            {formDataFilm.image && (
+                                <span className="vt-file-name">
+                                    {formDataFilm.image.name}
+                                </span>
+                            )}
+
                         </div>
-                        <div className="mb-3">
-                            <label htmlFor="genre" className="form-label">Genere</label>
-                            <input type="text" className="form-control" id="genre" placeholder="Inserisci il genere" value={formDataFilm.genre} name="genre" onChange={sendData} required />
-                        </div>
-                        <div className="mb-3">
-                            <label htmlFor="director" className="form-label">Regista</label>
-                            <input type="text" className="form-control" id="director" placeholder="Inserisci il regista" value={formDataFilm.director} name="director" onChange={sendData} required />
-                        </div>
-                        <div className="mb-3">
-                            <label htmlFor="abstract" className="form-label">Trama</label>
-                            <textarea className="form-control" id="abstract" rows="3" value={formDataFilm.abstract} name="abstract" onChange={sendData} required></textarea>
-                        </div>
-                        <div className="mb-3">
-                            <label htmlFor="image" className="form-label">Immagine</label>
-                            <input className="form-control" type="file" id="image" name="image" onChange={sendData} required />
-                        </div>
-                        <div className="mb-3">
-                            <button type="submit" className="btn btn-danger">Aggiungi</button>
-                        </div>
-                    </form>
-                    {successMessage && (
-                        <div className="alert alert-success vt-flex-success" role="alert">
-                            {successMessage}
-                            <Link to={'/movies'} className="btn btn-danger" >Torna alla lista dei Film</Link>
-                        </div>
-                    )}
-                </div>
+                    </div>
+
+                    <div className="vt-form-actions">
+                        <button type="submit" className="vt-btn-submit" disabled={isSending}>
+                            {isSending ? 'Invio...' : 'Aggiungi film'}
+                        </button>
+                    </div>
+                </form>
+
+                {successMessage && (
+                    <div className="vt-success-box">
+                        <span>{successMessage}</span>
+                        <Link to="/movies" className="vt-success-link">
+                            Torna alla lista dei film
+                        </Link>
+                    </div>
+                )}
             </div>
-        </div>
+        </section>
     )
 }

@@ -36,15 +36,29 @@ export default function Movies() {
     }
 
     return (
-        <section className="container my-3">
-            <div className="vt-flex">
-                <h2 className="mb-3 vt-text-color vt-text-dimension">I migliori Film da vedere</h2>
-                <div className="d-flex flex-column">
-                    <Link className="vt-text-color btn btn-danger ms-auto mb-3" to={'/add-movie'} ><i className="fa-solid fa-plus"></i> Aggiungi Film</Link>
-                    <SearchComponent search={search} setSearch={setSearch} searchMovies={searchMovies} />
+        <section className="container my-4">
+            <div className="vt-movies-header">
+                <div className="vt-movies-header-text">
+                    <h1 className="vt-page-title">Movie Collection</h1>
+                    <p className="vt-page-subtitle">
+                        Scopri i migliori film, leggi recensioni e aggiungi i tuoi preferiti.
+                    </p>
+                </div>
+
+                <div className="vt-movies-header-actions">
+                    <Link className="vt-add-movie-btn" to={'/add-movie'}>
+                        <i className="fa-solid fa-plus"></i> Aggiungi Film
+                    </Link>
+
+                    <SearchComponent
+                        search={search}
+                        setSearch={setSearch}
+                        searchMovies={searchMovies}
+                    />
                 </div>
             </div>
-            <div className="row">
+
+            <div className="row g-4">
                 <MovieCard movies={movies} />
             </div>
         </section>
