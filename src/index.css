@@ -1,7 +1,25 @@
+html, body, #root{
+  margin: 0;
+  padding: 0;
+}
+
+:root{
+  --bg-main: #1e1f26;
+  --bg-card: #2a2c35;
+  --bg-card-hover: #323540;
+  --text-main: #ffffff;
+  --text-secondary: #b0b3b8;
+  --accent: #e50914;
+  --radius: 12px;
+}
+
 body{
   font-family: "Open Sans", sans-serif;
   font-optical-sizing: auto;
-  background-color: #2c2f33;
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  margin: 0;
+  overflow-x: hidden;
 }
 img{
   width: 100%;
@@ -54,4 +72,765 @@ img{
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.form-control{
+  background-color: #1f2128;
+  border: 1px solid #444;
+  color: white;
+}
+
+.form-control:focus{
+  border-color: var(--accent);
+  box-shadow: none;
+}
+
+/* bottone indietro */
+.vt-btn-back{
+  background-color: #e50914;
+  color: #ffffff;
+  text-decoration: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-weight: 700;
+  transition: background-color 0.25s ease, transform 0.25s ease;
+}
+.vt-btn-back:hover{
+  background-color: #b20710;
+  color: #ffffff;
+}
+
+
+
+/* New Style */
+
+/* Header */
+
+.vt-navbar{
+  background-color: #141414;
+  border-bottom: 1px solid #2a2a2a;
+  padding: 14px 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.vt-navbar-content{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.vt-navbar-left{
+  display: flex;
+  align-items: center;
+}
+
+.vt-brand{
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+}
+
+.vt-logo{
+  width: 42px;
+  height: 42px;
+  object-fit: contain;
+}
+
+.vt-brand-text{
+  color: #ffffff;
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.vt-navbar-right{
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.vt-nav-link{
+  color: #bdbdbd;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.25s ease;
+}
+
+.vt-nav-link:hover{
+  color: #ffffff;
+}
+
+
+/* Welcome Page */
+
+.vt-hero{
+  position: relative;
+  min-height: calc(100vh - 71px);
+  display: flex;
+  align-items: center;
+  background-image: url('/background-cinema.webp');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+}
+
+.vt-hero-overlay{
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0.82) 0%,
+      rgba(0, 0, 0, 0.55) 45%,
+      rgba(0, 0, 0, 0.75) 100%
+    );
+}
+
+.vt-hero-content{
+  position: relative;
+  z-index: 2;
+  max-width: 700px;
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+.vt-hero-kicker{
+  display: inline-block;
+  margin-bottom: 16px;
+  color: #e50914;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+}
+
+.vt-hero-title{
+  color: #fff;
+  font-size: clamp(2.4rem, 5vw, 4.5rem);
+  line-height: 1.05;
+  font-weight: 800;
+  margin-bottom: 18px;
+}
+
+.vt-hero-subtitle{
+  color: #d0d0d0;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  max-width: 620px;
+  margin-bottom: 28px;
+}
+
+.vt-hero-actions{
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.vt-hero-btn-primary,
+.vt-hero-btn-secondary{
+  text-decoration: none;
+  padding: 12px 18px;
+  border-radius: 10px;
+  font-weight: 700;
+  transition: all 0.25s ease;
+}
+
+.vt-hero-btn-primary{
+  background: #e50914;
+  color: #fff;
+}
+
+.vt-hero-btn-primary:hover{
+  background: #b20710;
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+.vt-hero-btn-secondary{
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.18);
+  color: #fff;
+  backdrop-filter: blur(6px);
+}
+
+.vt-hero-btn-secondary:hover{
+  background: rgba(255,255,255,0.14);
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+
+/* Movie List Page */
+.vt-movies-header{
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.vt-movies-header-text{
+  max-width: 600px;
+}
+
+.vt-page-title{
+  margin: 0 0 8px;
+  color: #fff;
+  font-size: 2.2rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.vt-page-subtitle{
+  margin: 0;
+  color: #a9a9a9;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.vt-movies-header-actions{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 14px;
+}
+
+.vt-add-movie-btn{
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #e50914;
+  color: #fff;
+  text-decoration: none;
+  padding: 10px 16px;
+  border-radius: 10px;
+  font-weight: 700;
+  transition: background-color 0.25s ease, transform 0.25s ease;
+}
+
+.vt-add-movie-btn:hover{
+  background-color: #b20710;
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+/* Card */
+.vt-movie-card{
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.vt-movie-card img{
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  transition: 0.4s;
+}
+
+/* hover zoom */
+.vt-movie-card:hover img{
+  transform: scale(1.1);
+}
+
+/* overlay nascosto */
+.vt-overlay{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 15px;
+  background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+  color: white;
+  opacity: 0;
+  transition: 0.3s;
+}
+
+/* appare in hover */
+.vt-movie-card:hover .vt-overlay{
+  opacity: 1;
+}
+
+/* titolo */
+.vt-overlay h5{
+  font-size: 18px;
+  font-weight: bold;
+}
+
+/* bottone */
+.vt-btn{
+  display: inline-block;
+  margin-top: 8px;
+  margin-left: 10px;
+  background: #e50914;
+  padding: 6px 10px;
+  border-radius: 5px;
+  color: white;
+  text-decoration: none;
+}
+
+/* Search Componet */
+.vt-search-form{
+  width: 100%;
+}
+
+.vt-search-wrapper{
+  display: flex;
+  align-items: center;
+  background: #1f1f1f;
+  border: 1px solid #2c2c2c;
+  border-radius: 10px;
+  overflow: hidden;
+  min-width: 320px;
+}
+
+.vt-search-wrapper input{
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  padding: 10px 14px;
+  font-size: 14px;
+}
+
+.vt-search-wrapper input::placeholder{
+  color: #8d8d8d;
+}
+
+.vt-search-wrapper input:focus{
+  outline: none;
+  background: transparent;
+  color: #ffffff;
+}
+
+.vt-search-wrapper:focus-within{
+  border-color: #e50914;
+  box-shadow: 0 0 0 2px rgba(229, 9, 20, 0.15);
+}
+
+.vt-search-wrapper button{
+  background: #e50914;
+  border: none;
+  color: white;
+  padding: 10px 16px;
+  font-weight: 700;
+  transition: background-color 0.25s ease;
+}
+
+.vt-search-wrapper button:hover{
+  background: #b20710;
+}
+
+/* Details page */
+
+.vt-detail-card{
+  background: #1f1f1f;
+  border-radius: 12px;
+  padding: 25px;
+  margin-bottom: 30px;
+}
+
+.vt-detail{
+  display: flex;
+  gap: 30px;
+  align-items: flex-start;
+}
+
+.vt-detail img{
+  width: 250px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.vt-detail-info h1{
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.vt-meta{
+  display: flex;
+  gap: 15px;
+  color: #aaa;
+  margin: 10px 0;
+}
+
+.vt-rating{
+  margin: 10px 0;
+}
+
+.vt-description{
+  color: #ccc;
+  line-height: 1.6;
+}
+
+/* Card Reviews */
+
+.vt-review-card{
+  background: #2a2a2a;
+  border-radius: 12px;
+  padding: 16px 18px;
+  transition: background-color 0.25s ease;
+  margin-bottom:20px;
+}
+
+.vt-review-card:hover{
+  background: #323540;
+}
+
+.vt-review-header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 12px;
+}
+
+.vt-user{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.vt-avatar{
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #e50914;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.vt-review-name{
+  margin: 0;
+  font-size: 16px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.vt-review-stars{
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.vt-review-text{
+  margin: 0;
+  color: #c7c7c7;
+  line-height: 1.6;
+  font-size: 14px;
+}
+
+
+
+/* Form Reviews */
+
+.vt-review-form{
+  background: #1f1f1f;
+  border: 1px solid #2c2c2c;
+  border-radius: 14px;
+  padding: 24px;
+}
+
+.vt-form-header{
+  margin-bottom: 20px;
+}
+
+.vt-form-header h3{
+  margin: 0;
+  color: #fff;
+}
+
+.vt-form-header p{
+  color: #aaa;
+  font-size: 14px;
+}
+
+.vt-form-group{
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+
+.vt-form-group label{
+  color: #ddd;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+/* INPUT + SELECT + TEXTAREA */
+.vt-form-group input,
+.vt-form-group textarea,
+.vt-form-group select{
+  background: #2a2a2a;
+  border: 1px solid #444;
+  color: white;
+  border-radius: 8px;
+  padding: 10px 12px;
+}
+
+.vt-form-group input:focus,
+.vt-form-group textarea:focus,
+.vt-form-group select:focus{
+  border-color: #e50914;
+  outline: none;
+}
+
+/* textarea */
+.vt-form-group textarea{
+  min-height: 120px;
+  resize: vertical;
+}
+
+/* button */
+.vt-form-footer{
+  display: flex;
+  justify-content: flex-end;
+}
+
+.vt-form-footer button{
+  background: #e50914;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  color: white;
+  font-weight: bold;
+  transition: 0.2s;
+}
+
+.vt-form-footer button:hover{
+  background: #b20710;
+}
+
+.vt-form-footer button:disabled{
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* success */
+.vt-success{
+  margin-top: 15px;
+  padding: 10px;
+  border-radius: 8px;
+  background: rgba(0,255,100,0.1);
+  color: #7ee2a8;
+  border: 1px solid rgba(0,255,100,0.3);
+}
+
+/* stars style */ 
+.vt-star-input{
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.vt-star-btn{
+  background: transparent;
+  border: none;
+  padding: 0;
+  font-size: 26px;
+  color: #f5c518;
+  cursor: pointer;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.vt-star-btn:hover{
+  transform: scale(1.15);
+}
+
+.vt-star-btn:focus{
+  outline: none;
+}
+
+.vt-star-btn i{
+  display: inline-block;
+}
+
+
+
+/* Add Movies */
+.vt-add-movie-page{
+  padding-bottom: 32px;
+}
+
+.vt-form-box{
+  max-width: 760px;
+  margin: 0 auto;
+  background: #1f1f1f;
+  border: 1px solid #2c2c2c;
+  border-radius: 16px;
+  padding: 28px;
+}
+
+.vt-form-box-header{
+  margin-bottom: 24px;
+}
+
+.vt-form-box-header h1{
+  margin: 0 0 8px;
+  color: #fff;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.vt-form-box-header p{
+  margin: 0;
+  color: #a9a9a9;
+  line-height: 1.6;
+}
+
+.vt-custom-form{
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.vt-form-group{
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.vt-form-group label{
+  color: #e8e8e8;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.vt-form-group input,
+.vt-form-group textarea{
+  width: 100%;
+  background: #2a2a2a;
+  border: 1px solid #444;
+  border-radius: 10px;
+  color: #fff;
+  padding: 12px 14px;
+}
+
+.vt-form-group input::placeholder,
+.vt-form-group textarea::placeholder{
+  color: #8d8d8d;
+}
+
+.vt-form-group input:focus,
+.vt-form-group textarea:focus{
+  outline: none;
+  border-color: #e50914;
+  box-shadow: 0 0 0 2px rgba(229, 9, 20, 0.15);
+}
+
+.vt-form-group textarea{
+  resize: vertical;
+  min-height: 130px;
+}
+
+.vt-form-group input[type="file"]{
+  padding: 10px;
+  cursor: pointer;
+}
+
+.vt-form-actions{
+  display: flex;
+  justify-content: flex-end;
+}
+
+.vt-btn-submit{
+  background: #e50914;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 18px;
+  font-weight: 700;
+  transition: background-color 0.25s ease, transform 0.25s ease;
+}
+
+.vt-btn-submit:hover{
+  background: #b20710;
+  transform: translateY(-1px);
+}
+
+.vt-btn-submit:disabled{
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.vt-success-box{
+  margin-top: 20px;
+  padding: 14px 16px;
+  border-radius: 12px;
+  background: rgba(25, 135, 84, 0.15);
+  border: 1px solid rgba(25, 135, 84, 0.35);
+  color: #85e0ab;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.vt-success-link{
+  color: #fff;
+  background: #e50914;
+  text-decoration: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-weight: 700;
+}
+
+.vt-success-link:hover{
+  background: #b20710;
+  color: #fff;
+}
+
+
+/* bottone upload immagine */
+.vt-file-upload{
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* NASCONDE INPUT */
+.vt-file-upload input[type="file"]{
+  display: none;
+}
+
+/* BOTTONE CUSTOM */
+.vt-file-label{
+  background: #2a2a2a;
+  border: 1px solid #444;
+  color: #fff;
+  padding: 10px 16px;
+  border-radius: 10px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s ease;
+}
+
+.vt-file-label:hover{
+  border-color: #e50914;
+  color: #fff;
+}
+
+/* NOME FILE */
+.vt-file-name{
+  color: #aaa;
+  font-size: 14px;
 }
